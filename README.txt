@@ -57,5 +57,6 @@ Q: What is the benefit of writing a set of scripts to be used from the command l
 of a single large script? How easy was it to load multiple weeks of data and generate
 new reports?
 
-A: flexibility, easy to automate(?), roll back.
+A: I feel the major benefits are (1) flexibility, especially in reusing the functions and scripts thus to keep the code dry globally, (2) easy to automate through shell commands, (3) user friendly interfaces. The design keeps the interface (at terminal) readable and easily interactive. On a side note, through working on this challenge, I also feel the simplicity of this approach comes with the price of interpretability and engineering complexities. For example, reading data via STDin/out is susceptible to other messages popped up in the shell, i.e. errors, debugging logs.
+
 
