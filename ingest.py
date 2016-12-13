@@ -11,7 +11,6 @@
 # 4) ingest to crimes database, with duplicates skipped
 
 import psycopg2
-import csv
 import sys
 import logging
 import setup
@@ -26,19 +25,9 @@ logger = setup.setup_logger()
 # split a csv-format crime event entry into variables
 def read_crime_stdin(crime_line):
     splited = [x for x in crime_line.split(',')]
+    return (splited[1],splited[2],splited[3],splited[4],splited[5],splited[6],splited[7],splited[8])
 
-    return (
-        splited[1],
-        splited[2],
-        splited[3],
-        splited[4],
-        splited[5],
-        splited[6],
-        splited[7],
-        splited[8],
-        )
-
-# check if a neighborhood string matches excisting directory
+# check if a neighborhood string matches existing directory
 # if not, try get substitute by a similar one
 
 def regulate_hood(cursor, raw_hood, _id):
@@ -85,7 +74,7 @@ def regulate_hood(cursor, raw_hood, _id):
         # if more than one matches found
         # log the matches and return the raw neighborhood input
         logger.warning('Ambiguous neighborhood (crime#%s) %s: similar to %s' % (_id, raw_hood, str(similar_hood_list)))
-        return raw_hood;
+        return raw_hood
 
 
 # upsert neighborhood-zone_no pairs into neighborhoods database

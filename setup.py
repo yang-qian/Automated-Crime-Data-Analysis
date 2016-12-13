@@ -76,21 +76,7 @@ def load_hood_base():
 
             data = [x.strip() for x in hood.split(',')]
 
-            (
-                intptlat10,
-                intptlon10,
-                neighborhood,
-                hood_no,
-                acres,
-                sqmiles,
-                ) = (
-                data[0],
-                data[1],
-                data[2],
-                data[3],
-                data[4],
-                data[5],
-                )
+            (intptlat10,intptlon10,neighborhood,hood_no,acres,sqmiles) = (data[0],data[1],data[2],data[3],data[4],data[5])
 
             # Put the splited data to the teams table
             try:
