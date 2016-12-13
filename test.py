@@ -52,6 +52,9 @@ class test_ingest_to_database(unittest.TestCase):
 
     @classmethod
     def tearDownClass(cases):
+        # delete the test tables
+        # so that the random records added during previous unittest iterations do not pollute the database
+        cursor.execute('''DROP TABLE crimes CASCADE; DROP TABLE crime_code; DROP TABLE neighborhoods;''')
         conn.close()
         logger.removeHandler(ch)
         logger.removeHandler(fh)
