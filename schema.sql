@@ -11,7 +11,7 @@
 create table neighborhoods (
     INTPTLAT10 numeric,
     INTPTLON10 numeric,
-    NEIGHBORHOOD text unique not null primary key,
+    NEIGHBORHOOD text primary key,
     HOOD_NO integer unique,
     ZONE_NO integer,
     ACRES numeric CHECK (ACRES > 0),
@@ -29,7 +29,7 @@ create table neighborhoods (
 create TYPE report_type as enum ('ARREST', 'OFFENSE 2.0');
 
 create table crime_code (
-    SECTION varchar unique not null PRIMARY KEY,
+    SECTION varchar PRIMARY KEY,
     DESCRIPTION text unique CHECK (char_length(DESCRIPTION) > 0),
     REPORT_NAME report_type default 'OFFENSE 2.0'
 );
@@ -73,7 +73,7 @@ insert into crime_code (SECTION, DESCRIPTION, REPORT_NAME)
 -- Create table to store crime entries --
 
 create table crimes (
-    ID integer unique not null PRIMARY KEY,
+    ID integer PRIMARY KEY,
     SECTION varchar references crime_code,
     ARREST_TIME timestamp,
     ADDRESS text,
